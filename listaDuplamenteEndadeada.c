@@ -218,7 +218,7 @@ int main()
 
     int opcao, subopcao;
     int idLivro = 1, idUsuario = 1;
-    char titulo[100], autor[100], nome[100], email[100];
+    char titulo[100], nome[100];
 
     do
     {
