@@ -129,7 +129,7 @@ void listarLivros(ListaLivro* lista)
 {
     Nolivro* atual = lista->inicio;
     if (atual == NULL){
-        printf("Nenhum usuario cadastrado.\n");
+        printf("Nenhum livro cadastrado.\n");
         return;
     }
     while (atual != NULL)
@@ -137,6 +137,16 @@ void listarLivros(ListaLivro* lista)
         printf("%d - %s (%s)\n", atual->dado.id, atual->dado.titulo, atual->dado.autor);
         atual = atual->proximo;
     }
+}
+
+void liberarLivros(ListaLivro* lista){
+    Nolivro* atual = lista->inicio;
+    while (atual != NULL){
+        Nolivro* temp=atual;
+        atual = atual->proximo;
+        free(temp);
+    }
+    lista->inicio = lista->fim = NULL;
 }
 //------------------------FUNÇÕES PARA USUARIOS------------------------
 
@@ -203,11 +213,29 @@ int removerUsuario(ListaUsuario* lista, char* nome){
 void listarUsuarios(ListaUsuario* lista){
     Nousuario* atual = lista->inicio;
     if (atual == NULL){
-        printf("%d - %s (%s) \n",atual->dado.id, atual->dado.nome, atual->dado.email);
+        printf("Nenhum usuario cadastrado.\n");
+        return ;
+    }
+    while (atual != NULL){
+        printf("%d - %s (%s)\n",atual->dado.id, atual->dado.nome, atual->dado.email);
         atual = atual->proximo;
     }
 }
-// exemplo de  teste
+
+void liberarUsuarios(ListaUsuario *lista)
+{
+    Nousuario *atual = lista->inicio;
+    while (atual != NULL)
+    {
+        Nousuario* temp = atual;
+        atual = atual->proximo;
+        free(temp);
+    }
+    lista->inicio = lista->fim = NULL;
+}
+
+
+//------------------------FUNÇãO MAIN------------------------
 
 int main()
 {
@@ -344,6 +372,10 @@ int main()
         }
 
     } while (opcao != 0);
+
+    //Liberar a memoria antes de sair
+    liberarLivros(&catalogo);
+    liberarUsuarios(&usuarios);
 
     printf("Saindo...\n");
     return 0;
