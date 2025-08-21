@@ -43,4 +43,4 @@ O programa inclui um exemplo de uso no `main`, cadastrando três livros, exibind
 - [`lista`](listaDuplamenteEndadeada.c): Lista todos os livros.
 
 ---
-Trabalho desenvolvido para a disciplina de Estrutura de Dados.
+Trabalho desenvolvido para a disciplina de Estrutura de Dados
