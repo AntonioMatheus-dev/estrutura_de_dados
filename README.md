@@ -56,6 +56,3 @@ O sistema permite cadastrar, editar, remover e listar livros e usuários. Todas 
 
 ---
 
-**Aluno:** [Seu Nome]  
-**Disciplina:** Estrutura de Dados  
-**Professor:**
