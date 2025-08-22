@@ -1,46 +1,61 @@
-# README.md
-# Lista Duplamente Encadeada de Livros
+# Trabalho Final de Estrutura de Dados
 
-Este repositório contém minha parte do trabalho de Estrutura de Dados, onde implementei uma lista duplamente encadeada para gerenciar um catálogo de livros em linguagem C.
+Este repositório contém minha parte do **trabalho final da disciplina de Estrutura de Dados**, onde desenvolvi um sistema em C para gerenciamento de livros e usuários utilizando listas duplamente encadeadas.
 
-## Sobre o código
+## Sobre o projeto
 
-O arquivo [`listaDuplamenteEndadeada.c`](listaDuplamenteEndadeada.c) implementa as seguintes funcionalidades:
+O sistema permite cadastrar, editar, remover e listar livros e usuários. Todas as operações são realizadas por meio de um menu interativo no terminal. O objetivo é demonstrar o uso prático de listas duplamente encadeadas para manipulação dinâmica de dados.
 
-- **Cadastro de livros:** Adiciona novos livros ao final da lista.
-- **Edição de livros:** Permite editar o título e/ou autor de um livro, buscando pelo título.
-- **Remoção de livros:** Remove um livro da lista, buscando pelo título.
-- **Listagem de livros:** Exibe todos os livros cadastrados, mostrando ID, título e autor.
+### Funcionalidades implementadas
 
-A estrutura de dados utilizada é uma lista duplamente encadeada, onde cada nó armazena as informações de um livro e ponteiros para o nó anterior e o próximo.
+#### Livros
+- **Cadastro:** Adiciona novos livros ao catálogo.
+- **Edição:** Permite editar título e autor de um livro, buscando pelo título.
+- **Remoção:** Remove um livro pelo título.
+- **Listagem:** Exibe todos os livros cadastrados.
 
-O programa inclui um exemplo de uso no `main`, cadastrando três livros, exibindo a lista, editando e removendo livros, e mostrando o resultado final.
+#### Usuários
+- **Cadastro:** Adiciona novos usuários.
+- **Edição:** Permite editar nome e email do usuário, buscando pelo nome.
+- **Remoção:** Remove um usuário pelo nome.
+- **Listagem:** Exibe todos os usuários cadastrados.
+
+### Estruturas utilizadas
+
+- `Livro` e `Usuario`: Estruturas que armazenam os dados de cada entidade.
+- `Nolivro` e `Nousuario`: Nós das listas duplamente encadeadas.
+- `ListaLivro` e `ListaUsuario`: Estruturas que representam as listas.
+
+### Organização dos arquivos
+
+- `main.c`: Menu principal e lógica de interação.
+- `livros.c` / `livros.h`: Funções e estruturas para manipulação de livros.
+- `usuario.c` / `usuario.h`: Funções e estruturas para manipulação de usuários.
+- `structs.h`: Definição das estruturas de dados utilizadas.
 
 ## Como compilar e executar
 
-1. Compile o código:
+1. Compile todos os arquivos juntos:
    ```sh
-   gcc listaDuplamenteEndadeada.c -o output/listaDuplamenteEndadeada.exe
+   gcc main.c livros.c usuario.c -o output/main.exe
    ```
 
 2. Execute o programa:
    ```sh
-   ./output/listaDuplamenteEndadeada.exe
+   ./output/main.exe
+   ```
+   Ou, no Windows:
+   ```sh
+   output\main.exe
    ```
 
-## Estruturas principais
+## Observações
 
-- [`Livro`](listaDuplamenteEndadeada.c): Estrutura que representa um livro.
-- [`No`](listaDuplamenteEndadeada.c): Nó da lista duplamente encadeada.
-- [`ListaDupla`](listaDuplamenteEndadeada.c): Estrutura que representa a lista.
-
-## Funções implementadas
-
-- [`iniciarlista`](listaDuplamenteEndadeada.c): Inicializa a lista.
-- [`cadastrar`](listaDuplamenteEndadeada.c): Adiciona um livro.
-- [`editar`](listaDuplamenteEndadeada.c): Edita um livro pelo título.
-- [`remover`](listaDuplamenteEndadeada.c): Remove um livro pelo título.
-- [`lista`](listaDuplamenteEndadeada.c): Lista todos os livros.
+- O projeto foi desenvolvido com foco em praticar conceitos de listas duplamente encadeadas, manipulação de ponteiros e modularização de código em C.
+- Este trabalho faz parte da avaliação final da disciplina de Estrutura de Dados.
 
 ---
-Trabalho desenvolvido para a disciplina de Estrutura de Dados
+
+**Aluno:** [Seu Nome]  
+**Disciplina:** Estrutura de Dados  
+**Professor:**
