@@ -4,13 +4,13 @@
 
 #ifndef STRUCT_H
 #define STRUCT_H
-// Enum para o status do livro
+
 typedef enum {
     DISPONIVEL,
     EMPRESTADO
 } StatusLivro;
 
-// Enum para os tipos de ações que podem ser desfeitas
+
 typedef enum {
     ACAO_CADASTRAR_LIVRO,
     ACAO_EMPRESTAR,
@@ -18,14 +18,13 @@ typedef enum {
 } TipoAcao;
 
 
-// --- ESTRUTURAS PRINCIPAIS ---
 
 typedef struct {
     int id;
     char titulo[100];
     char autor[100];
     StatusLivro status;
-    int vezesEmprestado; // Contador para o relatório
+    int vezesEmprestado; 
 } Livro;
 
 typedef struct {
@@ -34,21 +33,18 @@ typedef struct {
     char email[100];
 } Usuario;
 
-// Estrutura para um registro de empréstimo ativo
 typedef struct {
     int idLivro;
     int idUsuario;
 } Emprestimo;
 
-// Estrutura para uma ação na pilha de Desfazer
 typedef struct {
     TipoAcao tipo;
-    int id_principal; // ID do livro
-    int id_secundario; // ID do usuário (no caso de empréstimo/devolução)
+    int id_principal; 
+    int id_secundario; 
 } Acao;
 
 
-// --- NÓS DAS ESTRUTURAS DE DADOS ---
 
 typedef struct Nolivro {
     Livro dado;
@@ -80,7 +76,6 @@ typedef struct NoEmprestimo {
 } NoEmprestimo;
 
 
-// --- CONTAINERS DAS LISTAS/FILAS/PILHAS ---
 
 typedef struct {
     Nolivro* inicio;

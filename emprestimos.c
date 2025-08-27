@@ -9,7 +9,6 @@
 #include "filadeespera.h"
 #include "acoesdapilha.h"
 
-// Protótipo para chamada interna recursiva
 void emprestarLivro(Catalogo* catalogo, ListaUsuarios* usuarios, ListaEmprestimos* emprestimos, FilaEspera* fila, PilhaAcoes* pilha, int idUsuario, int idLivro);
 
 void iniciarEmprestimos(ListaEmprestimos* lista) {
@@ -112,7 +111,7 @@ void desfazerUltimaAcao(Catalogo* catalogo, ListaUsuarios* usuarios, ListaEmpres
             break;
 
         case ACAO_EMPRESTAR:
-            // Lógica simplificada de devolução, sem acionar fila ou empilhar de novo
+            
             {
                 NoEmprestimo* emprestimo = emprestimos->inicio;
                 while(emprestimo) {
@@ -128,16 +127,16 @@ void desfazerUltimaAcao(Catalogo* catalogo, ListaUsuarios* usuarios, ListaEmpres
                 }
                 Nolivro* livro = buscarLivroPorId(catalogo, ultimaAcao.id_principal);
                 livro->dado.status = DISPONIVEL;
-                livro->dado.vezesEmprestado--; // Decrementa o contador
+                livro->dado.vezesEmprestado--; 
                 printf("Desfeito: Emprestimo do livro ID %d.\n", ultimaAcao.id_principal);
             }
             break;
 
         case ACAO_DEVOLVER:
-            // Lógica simplificada de empréstimo, sem empilhar de novo
+           
             {
                realizarEmprestimo(catalogo, usuarios, emprestimos, pilha, ultimaAcao.id_secundario, ultimaAcao.id_principal);
-               // Remove a ação de empréstimo que foi adicionada por realizarEmprestimo
+              
                Acao temp;
                desempilharAcao(pilha, &temp);
                printf("Desfeito: Devolucao do livro ID %d.\n", ultimaAcao.id_principal);

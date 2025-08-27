@@ -13,4 +13,4 @@ void desfazerUltimaAcao(Catalogo* catalogo, ListaUsuarios* usuarios, ListaEmpres
 void liberarEmprestimos(ListaEmprestimos* lista);
 
 
-#endif //EMPRESTIMOS_H
+#endif
