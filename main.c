@@ -202,23 +202,110 @@ int main()
             break;
         }
         case 5:
+        {
+            printf("\n--- Fila de Espera ---\n");
             listarFila(&fila);
+            printf("1. Adicionar usuario à fila de espera por livro\n");
+            printf("2. Atender próximo da fila ao devolver livro\n");
+            printf("0. Voltar\n");
+            printf("Escolha: ");
+            int filaOp;
+            scanf("%d", &filaOp);
+            limparBuffer();
+            if (filaOp == 1)
+            {
+                int idLivro, idUsuario;
+                printf("Digite o ID do livro: ");
+                scanf("%d", &idLivro);
+                printf("Digite o ID do usuario: ");
+                scanf("%d", &idUsuario);
+                limparBuffer();
+                Nolivro *livro = buscarLivroPorId(&catalogo, idLivro);
+                if (livro)
+                {
+                    if (livro->dado.vezesEmprestado >= 3)
+                    {
+                        enfileirar(&fila, idLivro, idUsuario);
+                        printf("Livro atingiu limite de 3 empréstimos. Usuário adicionado à fila de espera.\n");
+                    }
+                    else
+                    {
+                        printf("Livro ainda não atingiu o limite de empréstimos.\n");
+                    }
+                }
+                else
+                {
+                    printf("Livro não encontrado.\n");
+                }
+            }
+            else if (filaOp == 2)
+            {
+                int idLivro, idUsuario = -1;
+                printf("Digite o ID do livro devolvido: ");
+                scanf("%d", &idLivro);
+                limparBuffer();
+                if (desenfileirar(&fila, idLivro, &idUsuario))
+                {
+                    printf("Usuário (ID %d) pode pegar o livro (ID %d) agora!\n", idUsuario, idLivro);
+                }
+                else
+                {
+                    printf("Nenhum usuário aguardando por esse livro na fila.\n");
+                }
+            }
             break;
+        }
         case 6:
-            gerarRelatorioMaisEmprestados(&catalogo);
+        {
+            printf("\n--- Submenu Relatórios/Empréstimos ---\n");
+            printf("1. Gerar relatório de mais emprestados\n");
+            printf("2. Liberar empréstimos\n");
+            printf("0. Voltar\n");
+            printf("Escolha: ");
+            int relOp;
+            scanf("%d", &relOp);
+            limparBuffer();
+            if (relOp == 1)
+            {
+                gerarRelatorioMaisEmprestados(&catalogo);
+            }
+            else if (relOp == 2)
+            {
+                liberarEmprestimos(&emprestimos);
+                printf("Todos os empréstimos foram liberados\n");
+            }
             break;
+        }
         case 7:
-            desfazerUltimaAcao(&catalogo, &usuarios, &emprestimos, &fila, &acoes);
+        {
+            printf("\n--- Submenu Pilha de Ações ---\n");
+            printf("1. Desfazer última ação\n");
+            printf("2. Liberar pilha de ações\n");
+            printf("0. Voltar\n");
+            printf("Escolha: ");
+            int pilhaOp;
+            scanf("%d", &pilhaOp);
+            limparBuffer();
+            if (pilhaOp == 1)
+            {
+                desfazerUltimaAcao(&catalogo, &usuarios, &emprestimos, &fila, &acoes);
+            }
+
+            else if (pilhaOp == 2)
+            {
+                liberarPilha(&acoes);
+                printf("Pilha de ações liberada.\n");
+            }
             break;
+        }
         case 0:
             printf("Saindo do sistema...\n");
             break;
         default:
-            printf("Opcao invalida. Tente novamente.\n");
+            printf("Opcao invalida\n");
         }
 
     } while (opcao != 0);
-
 
     liberarCatalogo(&catalogo);
     liberarUsuarios(&usuarios);
